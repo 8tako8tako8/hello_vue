@@ -1,0 +1,55 @@
+<!-- *********************************************************************** -->
+<!--                                                                         -->
+<!--                                                      :::      ::::::::  -->
+<!-- index.html                                         :+:      :+:    :+:  -->
+<!--                                                  +:+ +:+         +:+    -->
+<!-- By: kmorimot <kmorimot@student.42tokyo.>       +#+  +:+       +#+       -->
+<!--                                              +#+#+#+#+#+   +#+          -->
+<!-- Created: 2020/12/26 15:20:32 by kmorimot          #+#    #+#            -->
+<!-- Updated: 2020/12/26 15:20:39 by kmorimot         ###   ########.fr      -->
+<!--                                                                         -->
+<!-- *********************************************************************** -->
+
+<!--
+  v-on:clickを使って、SHOWボタンによってメッセージ表示、HIDEボタンによって非表示させる。
+-->
+
+<!--
+  v-on 要素にイベントリスナをアタッチします。イベント種別は引数で示されます。
+  つまり、DOMイベントをリッスンするためにv-onを使う。
+  コード上では、showとhideというメソッドにclickイベントリスナ(イベントを拾うもの)をバインドする。
+  
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="show">SHOW</button>
+    <button v-on:click="hide">HIDE</button>
+    <p v-if="seen">{{ message }}</p>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!',
+        seen: true
+      },
+      methods: {
+        show: function(){
+          this.seen = true
+        },
+        hide: function(){
+          this.seen = false
+        }
+      }
+    })
+  </script>
+</body>
+</html>

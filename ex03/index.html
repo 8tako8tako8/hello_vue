@@ -1,0 +1,43 @@
+<!-- *********************************************************************** -->
+<!--                                                                         -->
+<!--                                                      :::      ::::::::  -->
+<!-- index.html                                         :+:      :+:    :+:  -->
+<!--                                                  +:+ +:+         +:+    -->
+<!-- By: kmorimot <kmorimot@student.42tokyo.>       +#+  +:+       +#+       -->
+<!--                                              +#+#+#+#+#+   +#+          -->
+<!-- Created: 2020/12/26 15:20:58 by kmorimot          #+#    #+#            -->
+<!-- Updated: 2020/12/26 15:21:00 by kmorimot         ###   ########.fr      -->
+<!--                                                                         -->
+<!-- *********************************************************************** -->
+
+<!--
+  v-modelを使って、入力フォームを作り入力した内容を表示させる。
+-->
+
+<!--
+  v-model formのinput要素とtextarea要素で双方向(two-way)データバインディングを作成することに使える。
+  今回は、入力する -> バインドされたmessageに文字列が入る -> 表示用messageに反映
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My first Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ message }}</p>
+      <input v-model="message" />
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          message: ""
+        }
+      });
+    </script>
+  </body>
+</html>

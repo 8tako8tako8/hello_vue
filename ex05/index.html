@@ -1,0 +1,64 @@
+<!-- *********************************************************************** -->
+<!--                                                                         -->
+<!--                                                      :::      ::::::::  -->
+<!-- index.html                                         :+:      :+:    :+:  -->
+<!--                                                  +:+ +:+         +:+    -->
+<!-- By: kmorimot <kmorimot@student.42tokyo.>       +#+  +:+       +#+       -->
+<!--                                              +#+#+#+#+#+   +#+          -->
+<!-- Created: 2020/12/26 15:21:32 by kmorimot          #+#    #+#            -->
+<!-- Updated: 2020/12/26 15:21:34 by kmorimot         ###   ########.fr      -->
+<!--                                                                         -->
+<!-- *********************************************************************** -->
+
+<!--
+  ネットフリックスリストにあるtextをseries-itemというコンポーネントを使って表示させる。
+-->
+
+<!--
+  前回はtemplateの中身に変数が入ってこなかったが、
+  今回はprops:['series'],template:'<h2>{{ series.text }}</h2>'となっており、
+  props(コンポーネントのプロパティ)をNetflixListと紐付ける必要がある。
+  したがって、v-forで配列に要素をマッピングしつつ、v-bind:seriesでバインド。
+  その結果templateにより、リストのtextが表示される。
+-->
+
+<!--
+  Propsを利用することで親コンポーネントから子コンポーネントに文字列、
+  数値、配列やオブジェクトなどの値を渡すことができます。
+  propsで受け取る属性名を指定し、templateで受け取った物を使用する。
+  親コンポーネント：app、子コンポーネント：series-item
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My first Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+          <series-item v-for="title in NetflixList"
+            v-bind:key="title.id"
+            v-bind:series="title"
+          ></series-item>
+    </div>
+
+    <script>
+      Vue.component('series-item', {
+        props: ['series'],
+        template: '<h2>{{ series.text }}</h2>'
+      })
+
+      var app = new Vue({
+        el: '#app',
+        data: {
+          NetflixList: [
+            { id: 0, text: "Queen's Gambit" },
+            { id: 1, text: "Altered Carbon" },
+            { id: 2, text: "Black Mirror" }
+          ]
+        }
+      })
+    </script>
+  </body>
+</html>

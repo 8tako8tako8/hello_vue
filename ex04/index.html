@@ -1,0 +1,43 @@
+<!-- *********************************************************************** -->
+<!--                                                                         -->
+<!--                                                      :::      ::::::::  -->
+<!-- index.html                                         :+:      :+:    :+:  -->
+<!--                                                  +:+ +:+         +:+    -->
+<!-- By: kmorimot <kmorimot@student.42tokyo.>       +#+  +:+       +#+       -->
+<!--                                              +#+#+#+#+#+   +#+          -->
+<!-- Created: 2020/12/26 15:21:12 by kmorimot          #+#    #+#            -->
+<!-- Updated: 2020/12/26 15:21:15 by kmorimot         ###   ########.fr      -->
+<!--                                                                         -->
+<!-- *********************************************************************** -->
+
+<!--
+  コンポーネントを使って、Hello Vue! を表示させる。
+-->
+
+<!--
+  コンポーネントは名前付きの再利用可能な Vue インスタンスです。
+  コンポーネントを new Vue で作成されたルート Vue インスタンス内でカスタム要素として使用することができます。
+  helloというコンポーネントを作り、そのtemplateに文字を入れておくことで、<hello>タグでその文字列を表示できる。
+  
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My first Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <hello></hello>
+    </div>
+    <script>
+      Vue.component("hello", {
+        template: "<h1>Hello Vue!</h1>"
+      });
+      var app = new Vue({
+        el: "#app"
+      });
+    </script>
+  </body>
+</html>
